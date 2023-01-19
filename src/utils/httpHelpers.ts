@@ -12,3 +12,13 @@ export const badRequest = (message: string) => ({
   statusCode: 400,
   message: { message },
 });
+
+export const notFound = (message: string) => ({
+  statusCode: 404,
+  message: { message },
+});
+
+export const unprocessableEntity = (message: string) => ({
+  statusCode: 422,
+  message: { message },
+});

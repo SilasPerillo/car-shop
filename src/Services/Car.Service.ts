@@ -1,6 +1,8 @@
+import { Types } from 'mongoose';
 import ICar from '../Interfaces/ICar';
 import CarODM from '../Models/CarODM';
-import { created } from '../utils/httpHelpers';
+import { ok, created, unprocessableEntity, notFound } from '../utils/httpHelpers';
+import CreateObj from './utils/CreateObj';
 // import { badRequest, ok } from '../utils/httpHelpers';
 
 export default class CarService {
@@ -9,17 +11,32 @@ export default class CarService {
 
     const result = await carODM.create(body);
 
-    const obj = {
-      id: result.id,
-      model: result.model,
-      year: result.year,
-      color: result.color,
-      status: result.status,
-      buyValue: result.buyValue,
-      doorsQty: result.doorsQty,
-      seatsQty: result.seatsQty,
-    };
+    const obj = CreateObj.Car(result);
 
     return created(obj);
+  }
+
+  static async getAll() {
+    const carODM = new CarODM();
+
+    const result = await carODM.getAll();
+
+    const resultsMap = result.map((car) => CreateObj.Car(car));
+
+    return ok(resultsMap);
+  }
+
+  static async getById(id: string) {
+    const carODM = new CarODM();
+
+    if (!Types.ObjectId.isValid(id)) return unprocessableEntity('Invalid mongo id');
+
+    const result = await carODM.getById(id);
+    
+    if (!result.length) return notFound('Car not found');
+    
+    const obj = CreateObj.Car(result[0]);
+
+    return ok(obj);
   }
 }
