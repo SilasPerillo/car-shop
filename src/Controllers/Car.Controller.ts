@@ -23,4 +23,13 @@ export default class CarController {
 
     return res.status(statusCode).json(message);
   }
+
+  static async update(req: Request, res: Response): Promise<Response> {
+    const { body } = req;
+    const { id } = req.params;
+
+    const { statusCode, message } = await CarService.update(id, body);
+
+    return res.status(statusCode).json(message);
+  }
 }
