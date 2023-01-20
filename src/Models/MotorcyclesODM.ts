@@ -22,13 +22,13 @@ export default class MotorcyclesODM {
     return this.model.create({ ...motorcycles }); 
   }
 
-  // public async getAll(): Promise<IMotorcycles[]> {
-  //   return this.model.find();
-  // }
+  public async getAll(): Promise<IMotorcycle[]> {
+    return this.model.find();
+  }
 
-  // public async getById(id: string): Promise<IMotorcycles[]> {
-  //   return this.model.find({ _id: id });
-  // }
+  public async getById(id: string): Promise<IMotorcycle[]> {
+    return this.model.find({ _id: id });
+  }
 
   // public async update(id: string, body: IMotorcycles) {
   //   return this.model.updateOne({ _id: id }, { ...body });

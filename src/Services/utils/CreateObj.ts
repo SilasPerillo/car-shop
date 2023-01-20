@@ -16,7 +16,7 @@ export default class CreateObj {
     return objectCreator;
   }
 
-  static Motorcycles(payload: IMotorcycle) {
+  static Motorcycle(payload: IMotorcycle) {
     const objectCreator = {
       id: payload.id,
       model: payload.model,
