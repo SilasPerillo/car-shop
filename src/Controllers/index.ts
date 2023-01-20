@@ -1,4 +1,4 @@
 import CarController from './Car.Controller';
-import Test from './test';
+import MotorcyclesController from './Motorcycles.Controller';
 
-export { CarController, Test };
+export { CarController, MotorcyclesController };

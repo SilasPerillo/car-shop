@@ -1,4 +1,4 @@
 import CarService from './Car.Service';
-import Test from './test';
+import MotorcyclesService from './Motorcycles.Service';
 
-export { CarService, Test };
+export { CarService, MotorcyclesService };
